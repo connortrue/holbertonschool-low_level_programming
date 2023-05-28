@@ -1,12 +1,17 @@
-#include <stdio.h>
+#include <unistd.h>
+#include "main.h"
 /**
- * main - this is what main does
+ * main - makes a string called _putchar and passes each char to the function
+ * of the same name
  *
  * Return: returns zero when complete
  */
 
 int main(void)
 {
-	puts("_putchar");
+	char *str = "_putchar\n";
+
+	while (*str)
+		_putchar(*str++);
 	return (0);
 }
