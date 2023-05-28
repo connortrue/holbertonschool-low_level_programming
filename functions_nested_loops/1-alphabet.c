@@ -1,7 +1,7 @@
 #include <unistd.h>
 #include "main.h"
 /**
- * print_alphabet - prints the alphabet in lower case to stdout, followed by a 
+ * print_alphabet - prints the alphabet in lower case to stdout, followed by a
  * new line
  *
  * Return: returns zero when complete
