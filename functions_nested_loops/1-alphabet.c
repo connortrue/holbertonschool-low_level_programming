@@ -7,7 +7,7 @@
  * Return: returns zero when complete
  */
 
-int print_alphabet(void)
+void print_alphabet(void)
 {
 	char *str = "abcdefghijklmnopqrstuvwxyz";
 
