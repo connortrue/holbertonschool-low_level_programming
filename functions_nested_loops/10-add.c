@@ -2,11 +2,12 @@
  * add - entry point
  *
  * Return: returns the added numbers
- * @int: numbers taken
+ * @a: first number to be added
+ * @b: second number to be added
  */
-int add(int, int)
+int add(int a, int b)
 {
-	int a, b, n;
+	int n;
 
 	n = a + b;
 	return (n);
