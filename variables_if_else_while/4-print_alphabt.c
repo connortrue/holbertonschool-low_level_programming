@@ -2,6 +2,7 @@
 
 /**
  * main - prints every character in the alphabet, lowercase, ending with a nl
+ * except for the letters e and q
  *
  * Return: returns 0 when it works
  */
