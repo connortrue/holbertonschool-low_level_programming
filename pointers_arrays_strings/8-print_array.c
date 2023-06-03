@@ -14,6 +14,14 @@ void print_array(int *a, int n)
 {
 	int i;
 
+	/* Check if the length is over 0 */
+	if (n <= 0)
+	{
+		_putchar('\n');
+		_putchar('\n');
+		return;
+	}
+
 	/* Print the first element */
 	printf("%d", a[0]);
 
