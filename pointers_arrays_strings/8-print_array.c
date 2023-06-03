@@ -15,7 +15,7 @@ void print_array(int *a, int n)
 	int i;
 
 	/* Check if the length is over 0 */
-	if (n <= 0)
+	if (n <= 0 || n > sizeof(a) / sizeof(int))
 		return;
 
 	/* Print the first element */
