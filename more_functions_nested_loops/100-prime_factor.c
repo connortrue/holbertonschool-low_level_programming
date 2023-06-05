@@ -2,21 +2,6 @@
 #include <math.h>
 
 /**
- * main - entry point
- *
- * Return: 0 when done
- */
-
-/* Function to find the maximum prime factor of a given number */
-int main(void)
-{
-	double n = 612852475143;
-
-	printf("%d\n", maxPrimeFactor(n));
-	return (0);
-}
-
-/**
  * maxPrimeFactor - finds the highest prime factor of a passed double
  * @n: number being tested
  *
@@ -50,4 +35,19 @@ int maxPrimeFactor(double n)
 		maxPrime = n;
 
 	return (maxPrime);
+}
+
+/**
+ * main - entry point
+ *
+ * Return: 0 when done
+ */
+
+/* Function to find the maximum prime factor of a given number */
+int main(void)
+{
+	double n = 612852475143;
+
+	printf("%d\n", maxPrimeFactor(n));
+	return (0);
 }
