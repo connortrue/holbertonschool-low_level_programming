@@ -9,9 +9,10 @@
 void reverse_array(int *a, int n)
 {
 	/* Print the string in reverse order */
-	for (n; n >= 0; n--)
+	while (n > 0)
 	{
 		_putchar(a[n]);
+		n--;
 	}
 
 	/* Print a new line character */
