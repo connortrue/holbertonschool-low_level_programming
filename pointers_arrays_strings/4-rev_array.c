@@ -1,21 +1,13 @@
 #include "main.h"
-/**
- *  * print_rev - Prints a string in reverse order followed by a new line.
- *   *
- *    * @s: The string to be printed in reverse order.
- *     *
- *      * Return: void.
- *       */
+
 void reverse_array(int *a, int n)
 {
-	n--;
-	/* Print the string in reverse order */
-	while (n > 0)
-	{
-		_putchar(a[n]);
-		n--;
-	}
+	int i, temp;
 
-	/* Print a new line character */
-	_putchar('\n');
+	for (i = 0; i < n / 2; i++)
+	{
+		temp = a[i];
+		a[i] = a[n - i - 1];
+		a[n - i - 1] = temp;
+	}
 }
