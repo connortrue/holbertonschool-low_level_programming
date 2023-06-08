@@ -9,7 +9,7 @@
 void reverse_array(int *a, int n)
 {
 	/* Print the string in reverse order */
-	for (--n; n >= 0; n--)
+	for (n; n >= 0; n--)
 	{
 		_putchar(a[n]);
 	}
