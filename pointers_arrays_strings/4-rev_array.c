@@ -11,7 +11,7 @@ void reverse_array(int *a, int n)
 	/* Print the string in reverse order */
 	for (--n; n >= 0; n--)
 	{
-		_putchar(s[n]);
+		_putchar(a[n]);
 	}
 
 	/* Print a new line character */
