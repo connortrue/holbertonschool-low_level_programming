@@ -8,6 +8,7 @@
  *       */
 void reverse_array(int *a, int n)
 {
+	n--;
 	/* Print the string in reverse order */
 	while (n > 0)
 	{
