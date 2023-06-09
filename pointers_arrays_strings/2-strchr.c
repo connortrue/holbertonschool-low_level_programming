@@ -20,5 +20,7 @@ char *_strchr(char *s, char c)
 			return (s); /* return pointer to current character */
 		s++; /* move to next character in string */
 	}
+	if (c == '/0') /* check if c is teh null character */
+		return (s); /* return pointer to null char at end of string */
 	return (NULL); /* character not found, return NULL */
 }
