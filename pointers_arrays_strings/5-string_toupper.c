@@ -1,5 +1,14 @@
 #include "main.h"
 
+/**
+ * *string_toupper - turns every lowercase character in a string to it's
+ * uupercasei
+ *
+ * @s: the string being case shifted
+ *
+ * Return: case shifted string
+ */
+
 char *string_toupper(char *s)
 {
 	int i = 0;
@@ -10,5 +19,5 @@ char *string_toupper(char *s)
 			s[i] = s[i] - 'a' + 'A';
 		i++;
 	}
-	return s;
+	return (s);
 }
