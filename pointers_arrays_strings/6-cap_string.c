@@ -1,6 +1,14 @@
+#include "main.h"
+
+/**
+ * *cap_string - turs the words in a string uppercase
+ * @s: the string being transformed
+ * Return: the string with words upshifted
+ */
+
 char *cap_string(char *s)
 {
-	int i = 0;
+	int i = 0, j;
 	int new_word = 1;
 	char separators[] = " \t\n,;.!?\"(){}";
 
@@ -11,15 +19,20 @@ char *cap_string(char *s)
 			s[i] = s[i] - 'a' + 'A';
 			new_word = 0;
 		}
-		else if (strchr(separators, s[i]) != NULL)
-		{
-			new_word = 1;
-		}
 		else
 		{
-			new_word = 0;
+			for (j = 0; separators[j] != '\0'; j++)
+			{
+				if (s[i] == separators[j])
+				{
+					new_word = 1;
+					break;
+				}
+			}
+			if (separators[j] == '\0')
+				new_word = 0;
 		}
 		i++;
 	}
-	return s;
+	return (s);
 }
