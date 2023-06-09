@@ -1,3 +1,13 @@
+#include "main.h"
+
+/**
+ * *leet - translates a string into leet speek
+ *
+ * @s: the string being translated
+ *
+ * Return: the translated string
+ */
+
 char *leet(char *s)
 {
 	int i, j;
