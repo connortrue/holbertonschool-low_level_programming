@@ -15,7 +15,7 @@ void print_chessboard(char (*a)[8])
 	{
 		/* Loop through columns */
 		for (j = 0; j < 8; j++)
-			putchar(a[i][j]); /* Print character */
-		putchar('\n'); /* New line after each row */
+			_putchar(a[i][j]); /* Print character */
+		_putchar('\n'); /* New line after each row */
 	}
 }
