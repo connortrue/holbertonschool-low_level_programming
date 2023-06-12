@@ -1,0 +1,10 @@
+#!/bin/bash
+
+file=$1
+include='#include "main.h"'
+
+# Check if the file contains the include line
+if ! grep -q "$include" "$file"; then
+    # If the include line is not found, add it to the top of the file
+    sed -i "1i $include" "$file"
+fi
