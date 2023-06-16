@@ -1,0 +1,14 @@
+#!/bin/bash
+# This script searches for the line "#define NULL ((void *)0)" in a file
+# and adds it if it doesn't find it.
+
+if [ "$#" -ne 1 ]; then
+    echo "Usage: $0 filename"
+    exit 1
+fi
+
+filename="$1"
+
+if ! grep -q '#define NULL ((void *)0)' "$filename"; then
+    echo '#define NULL ((void *)0)' >> "$filename"
+fi
