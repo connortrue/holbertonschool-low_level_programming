@@ -1,4 +1,4 @@
 void main(void)
 {
-	puts(argc[0]);
+	puts(argv[0]);
 }
