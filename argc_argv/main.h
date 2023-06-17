@@ -1,1 +1,1 @@
-int main(char *argv[]);
+int main(int argc, char *argv[]);
