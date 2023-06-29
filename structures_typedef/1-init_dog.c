@@ -1,20 +1,11 @@
-#ifndef DOG_H
-#define DOG_H
+#include "main.h"
 /**
- * struct dog - a struct for a dog
- * @name: the dog's name, a string
- * @age: dog's age, a float
- * @owner: the name of the dogs owner, a string
+ * init_dog - initializes a dog struct with the passed variables
+ * @d: the dog struct to be filled
+ * @name: the name to be assigned
+ * @age: the dog's age
+ * @owner: name of the owner
  */
-
-struct dog
-{
-	char *name;
-	float age;
-	char *owner;
-};
-#endif /* DOG_H */
-
 void init_dog(struct dog *d, char *name, float age, char *owner)
 {
 	d->name = name;
