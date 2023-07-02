@@ -7,8 +7,8 @@
  *
  * This function takes in a pointer to a struct dog variable as its only
  * parameter. If the pointer is NULL, the function returns immediately without
- * printing anything. If the pointer is not NULL, the function prints the values
- * of the name, age, and owner fields of the struct dog var pointed to by d.
+ * printing anything. If the pointer is not NULL, it prints the values of the
+ * name, age, and owner fields of the struct dog var pointed to by d.
  * If any of them are NULL, it prints (nil) instead of the value.
  */
 void print_dog(struct dog *d)
