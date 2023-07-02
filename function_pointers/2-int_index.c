@@ -8,9 +8,9 @@
  *
  * Return: index of the first element that matches, or -1 if none or size <= 0
  */
-int int_index(int *array, size_t size, int (*cmp)(int))
+int int_index(int *array, int size, int (*cmp)(int))
 {
-	size_t i;
+	int i;
 
 	/* Check if array and cmp are not NULL */
 	if (array && cmp)
