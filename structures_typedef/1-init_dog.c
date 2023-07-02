@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 /**
  * init_dog - initializes a dog struct with the passed variables
  * @d: the dog struct to be filled
