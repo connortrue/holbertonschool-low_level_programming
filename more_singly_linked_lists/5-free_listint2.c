@@ -11,6 +11,10 @@ void free_listint2(listint_t **head)
 {
 	listint_t *current;
 
+	/* check if head is NULL */
+	if (head != NULL)
+		free_listint2(head);
+
 	/* iterate through the list and free each node */
 	while (*head != NULL)
 	{
