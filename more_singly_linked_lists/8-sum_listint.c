@@ -7,7 +7,7 @@
  * This function iterates through the linked list and sums the elements. The
  * function returns the sum of the elements.
  *
- * Returns: the sum of the elements in the linked list
+ * Return: the sum of the elements in the linked list
  */
 int sum_listint(listint_t *head)
 {
