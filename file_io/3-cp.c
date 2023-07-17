@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
 	mode_t mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
 
 	if (argc != 3)
-		error_msg("Usage: cp file_from file_to\n", NULL, 97, 0, 0);
+		error_msg("Usage: cp file_from file_to", NULL, 97, 0, 0);
 
 	fd_from = open(argv[1], O_RDONLY);
 	if (fd_from == -1)
