@@ -23,7 +23,7 @@ int pop_listint(listint_t **head)
 		return (0);
 
 	/* save the head node's data */
-	n = (*head)->data;
+	n = (*head)->n;
 
 	/* save the address of the next node */
 	temp = (*head)->next;
