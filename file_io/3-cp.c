@@ -7,6 +7,9 @@
 
 #define BUFSIZE 1024
 
+void close_fd(int fd1, int fd2);
+void error_msg(char *msg, char *file, int exit_code, int fd1, int fd2);
+
 /**
  * main - copies the content of a file to another file
  * @argc: number of arguments
@@ -16,63 +19,56 @@
  */
 int main(int argc, char *argv[])
 {
-    int fd_from, fd_to, rd, wr;
-    char buf[BUFSIZE];
-    mode_t mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
+	int fd_from, fd_to, rd;
+	char buf[BUFSIZE];
+	mode_t mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
 
-    if (argc != 3)
-    {
-        dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
-        exit(97);
-    }
+	if (argc != 3)
+		error_msg("Usage: cp file_from file_to\n", NULL, 97, 0, 0);
 
-    fd_from = open(argv[1], O_RDONLY);
-    if (fd_from == -1)
-    {
-        dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-        exit(98);
-    }
+	fd_from = open(argv[1], O_RDONLY);
+	if (fd_from == -1)
+		error_msg("Error: Can't read from file ", argv[1], 98, 0, 0);
 
-    fd_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, mode);
-    if (fd_to == -1)
-    {
-        dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-        close(fd_from);
-        exit(99);
-    }
+	fd_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, mode);
+	if (fd_to == -1)
+		error_msg("Error: Can't write to ", argv[2], 99, fd_from, 0);
 
-    while ((rd = read(fd_from, buf, BUFSIZE)) > 0)
-    {
-        wr = write(fd_to, buf, rd);
-        if (wr == -1)
-        {
-            dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-            close(fd_from);
-            close(fd_to);
-            exit(99);
-        }
-    }
+	while ((rd = read(fd_from, buf, BUFSIZE)) > 0)
+		if (write(fd_to, buf, rd) == -1)
+			error_msg("Error: Can't write to ", argv[2], 99, fd_from, fd_to);
 
-    if (rd == -1)
-    {
-        dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-        close(fd_from);
-        close(fd_to);
-        exit(98);
-    }
+	if (rd == -1)
+		error_msg("Error: Can't read from file ", argv[1], 98, fd_from, fd_to);
 
-    if (close(fd_from) == -1)
-    {
-        dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_from);
-        close(fd_to);
-        exit(100);
-    }
+	close_fd(fd_from, fd_to);
+	return (0);
+}
 
-    if (close(fd_to) == -1)
-    {
-        dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_to);
-        exit(100);
-    }
+/**
+ * close_fd - closes file descriptors
+ * @fd1: first file descriptor to close
+ * @fd2: second file descriptor to close
+ */
+void close_fd(int fd1, int fd2)
+{
+	if (fd1 && close(fd1) == -1)
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd1), exit(100);
+	if (fd2 && close(fd2) == -1)
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd2), exit(100);
+}
 
-    return (0);
+/**
+ * error_msg - prints an error message and exits with a code
+ * @msg: message to print
+ * @file: name of the file to include in the message
+ * @exit_code: code to exit with
+ * @fd1: first file descriptor to close before exiting
+ * @fd2: second file descriptor to close before exiting
+ */
+void error_msg(char *msg, char *file, int exit_code, int fd1, int fd2)
+{
+	dprintf(STDERR_FILENO, "%s%s\n", msg, file ? file : "");
+	close_fd(fd1, fd2);
+	exit(exit_code);
 }
