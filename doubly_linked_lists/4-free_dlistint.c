@@ -1,42 +1,28 @@
 #include "lists.h"
-
 /**
- * add_dnodeint_end - Adds a new node at the end of a dlistint_t list.
- * @head: Double pointer to the head of the list.
- * @n: The integer data of the new node.
- *
- * Return: The address of the new element, or NULL if it failed.
+ * free_dlistint - Frees a dlistint_t list.
+ * @head: The head of the list.
  */
-dlistint_t *add_dnodeint_end(dlistint_t **head, const int n)
+void free_dlistint(dlistint_t *head)
 {
-	/* temp for later, C89 needs these together */
-	dlistint_t *temp = *head;
-	/* Allocate a new node */
-	dlistint_t *new_node = malloc(sizeof(dlistint_t));
+	/* Check if the list is empty */
+	if (head == NULL)
+		return;
 
-	if (new_node == NULL)
-		return (NULL);
+	/* Declare two pointers to iterate through the list */
+	dlistint_t *current = head;
+	dlistint_t *next;
 
-	/* Initialize the new node */
-	new_node->n = n;
-	new_node->next = NULL;
-
-	/* If the list is empty, make the new node the head */
-	if (*head == NULL)
+	/* Iterate through the list, freeing each node in turn */
+	while (current != NULL)
 	{
-		new_node->prev = NULL;
-		*head = new_node;
-		return (new_node);
+		/* Save the next node in the list */
+		next = current->next;
+
+		/* Free the current node */
+		free(current);
+
+		/* Set the current node to the next node */
+		current = next;
 	}
-
-	/* Otherwise, find the end of the list */
-	while (temp->next != NULL)
-		temp = temp->next;
-
-	/* Add the new node to the end of the list */
-	temp->next = new_node;
-	new_node->prev = temp;
-
-	/* Return the address of the new node */
-	return (new_node);
 }
