@@ -39,12 +39,10 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 	if (new_node == NULL)
 		return (NULL);
 
-	/* Initialize the new node */
 	new_node->n = n;
 	new_node->next = NULL;
 	new_node->prev = NULL;
 
-	/* Find the node before the index */
 	current = *h;
 	prev = NULL;
 	while (i < idx)
@@ -55,18 +53,16 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 	}
 
 	if (prev == NULL)
-	{	/* Insert the new node at the beginning of the list */
+	{
 		new_node->next = *h;
 		*h = new_node;
 	}
 	else
-	{	/* Insert the new node after the previous node */
-		new_node->next = current;
+	{
 		current->prev = new_node;
 		prev->next = new_node;
 		new_node->prev = prev;
 	}
 
-	/* Return the address of the new node */
 	return (new_node);
 }
