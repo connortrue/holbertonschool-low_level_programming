@@ -10,8 +10,8 @@ void free_dlistint(dlistint_t *head)
 	dlistint_t *next;
 
 	/* Check if the list is empty */
-        if (head == NULL)
-                return;
+	if (head == NULL)
+		return;
 
 	/* Iterate through the list, freeing each node in turn */
 	while (current != NULL)
