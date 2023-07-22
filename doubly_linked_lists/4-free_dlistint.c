@@ -9,6 +9,8 @@
  */
 dlistint_t *add_dnodeint_end(dlistint_t **head, const int n)
 {
+	/* temp for later, C89 needs these together */
+	dlistint_t *temp = *head;
 	/* Allocate a new node */
 	dlistint_t *new_node = malloc(sizeof(dlistint_t));
 
@@ -28,8 +30,6 @@ dlistint_t *add_dnodeint_end(dlistint_t **head, const int n)
 	}
 
 	/* Otherwise, find the end of the list */
-	dlistint_t *temp = *head;
-
 	while (temp->next != NULL)
 		temp = temp->next;
 
