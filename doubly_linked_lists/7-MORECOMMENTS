@@ -1,0 +1,55 @@
+/*
+ * insert_dnodeint_at_index - Inserts a new node at a given position.
+ * @h: Double pointer to the head of the list.
+ * @idx: The index of the list where the new node should be added.
+ * @n: The integer data of the new node.
+ *
+ * Return: The address of the new node, or NULL if it failed.
+ */
+dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
+{
+    /* Check if the head pointer is NULL */
+    if (h == NULL)
+        return (NULL);
+
+    /* Check if the index is 0 */
+    if (idx == 0)
+        return (add_dnodeint(h, n));
+
+    /* Initialize a temporary pointer to the head of the list */
+    dlistint_t *temp = *h;
+
+    /* Iterate through the list until we reach the index */
+    for (unsigned int i = 0; temp != NULL && i < idx; i++)
+        temp = temp->next;
+
+    /* Check if the index is out of bounds */
+    if (temp == NULL && i == idx)
+        return (add_dnodeint_end(h, n));
+
+    /* Check if the index is valid */
+    if (temp != NULL)
+    {
+        /* Create a new node */
+        dlistint_t *new_node = malloc(sizeof(dlistint_t));
+
+        /* Check if the malloc() call failed */
+        if (new_node == NULL)
+            return (NULL);
+
+        /* Initialize the new node */
+        new_node->n = n;
+        new_node->prev = temp->prev;
+        new_node->next = temp;
+
+        /* Update the links of the previous and next nodes */
+        temp->prev->next = new_node;
+        temp->prev = new_node;
+
+        /* Return the address of the new node */
+        return (new_node);
+    }
+
+    /* Return NULL if the index is out of bounds */
+    return (NULL);
+}
