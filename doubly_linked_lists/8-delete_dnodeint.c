@@ -1,8 +1,8 @@
 #include "lists.h"
 /**
  * delete_dnodeint_at_index - this function deletes the node at a given index
- * @head - the double list to delete from
- * @index - the index of the node to delete
+ * @head: the double list to delete from
+ * @index: the index of the node to delete
  *
  * Return: 1 if complete, -1 if failed
  */
