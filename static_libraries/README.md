@@ -1,1 +1,1 @@
-yep this a readme
+In this project we recreated some of the basic C functions in order to get a better understanding of how they work under the hood, how many different ways we can accomplish the same goal, and experimented with what might be the most effecient way.
